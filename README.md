@@ -1,62 +1,136 @@
+<p align="center">
+  <img src="assets/spartan-logo.svg" width="520"/>
+</p>
+
 # SPARTAN
 
-**SPARTAN** provides:
-- **Spatial domains identification** (graph-based clustering using joint LSA / gene / spatial graphs)
-- **Spatially variable gene discovery** using the **Spatial Activation Quotient (SAQ)**
+**SPARTAN** (Spatial Activation–Aware Transcriptomic Analysis Network) is a Python toolkit
+for **spatial domain identification** and **spatially variable gene (SVG) discovery**
+in spatial transcriptomics data.
 
-This repository is structured in a Scanpy-like way:
-- `spartan.tl.*` for tools (compute + write results into `adata`)
-- `spartan.pl.*` for plotting
+SPARTAN integrates spatial proximity, gene expression similarity, and **local spatial
+activation (LSA)** — a neighborhood-dependent spatial autocorrelation signal —
+to resolve biologically coherent tissue domains and identify genes associated with
+localized spatial structure. The method is designed to preserve anatomical boundaries,
+detect transition zones, and highlight spatial microenvironments across diverse spatial
+transcriptomics technologies.
 
-> Note on naming: the PyPI name `spartan` is already taken by other projects, so the install name here is **`spartan-st`**. You still import it as `import spartan`.
+---
 
-## Install
+## Conceptual overview
 
-### Conda (recommended)
+Most spatial clustering methods rely on two signals:
+(1) physical proximity and (2) transcriptomic similarity.
+SPARTAN introduces a third signal — **local spatial activation (LSA)** —
+which quantifies how strongly a spot’s molecular state deviates from its local neighborhood.
+
+SPARTAN constructs three graphs:
+
+1. **Spatial graph (S)**  
+   Encodes physical proximity between neighboring spots or cells.
+
+2. **Gene expression graph (G)**  
+   Captures transcriptomic similarity in a latent (PCA) space.
+
+3. **Local spatial activation graph (L)**  
+   Measures neighborhood-dependent spatial autocorrelation, highlighting tissue
+   interfaces, boundaries, and transition regions.
+
+These graphs are combined into a **multiplex joint graph**, which is partitioned using
+the Leiden algorithm to identify **spatial domains**.  
+The same local activation signal is used to compute a **Spatial Activation Quotient (SAQ)**
+for robust, permutation-based detection of **spatially variable genes**.
+
+---
+
+## Key features
+
+- Multiplex graph-based spatial domain identification
+- Explicit modeling of local spatial activation
+- Robust SVG discovery using the Spatial Activation Quotient (SAQ)
+- Scanpy-style API (`spartan.tl`, `spartan.pl`)
+- Compatible with AnnData and SpatialData tables
+- Scales across sequencing- and imaging-based spatial technologies
+
+---
+
+## Installation
+
+### Recommended (conda)
+
 ```bash
 conda env create -f environment.yml
 conda activate biogis
 pip install -e .
 ```
-
-### Pip
+### Pip 
 ```bash
-pip install -e .
+pip install spartan-st
 ```
 
 ## Quickstart (AnnData)
+
 ```python
 import spartan as sp
 
-# domains
-sp.tl.spartan_spatial_domains(adata, key_added="spartan_domains")
+# Spatial domain identification
+sp.tl.spartan_spatial_domains(
+    adata,
+    key_added="spartan_domains",
+)
 
-# inspect
+# Inspect domain assignments
 adata.obs["spartan_domains"].value_counts()
-adata.obsp["spartan_joint_graph"]
 
-# SVGs
-lsa = adata.obsp["spartan_lsa_graph"]
-sp.tl.spartan_svg(adata, lsa_graph=lsa, key_added="spartan_svg")
+# Spatially variable gene discovery
+sp.tl.spartan_svg(
+    adata,
+    lsa_graph=adata.obsp["spartan_lsa_graph"],
+)
 
-# top genes
-top = adata.var.sort_values("spartan_saq", ascending=False).head(20)
-print(top.index.tolist())
-```
+# View top spatially variable genes
+adata.var.sort_values("spartan_saq", ascending=False).head(10)
 
 ## Outputs
 
-### Domains
-- `adata.obs[key_added]` : domain labels (categorical)
-- Graphs in `adata.obsp`:
-  - `spartan_spatial_graph`, `spartan_spatial_weights`
-  - `spartan_lsa_graph`, `spartan_gene_graph`, `spartan_joint_graph`
+### Spatial domains
+- `adata.obs["spartan_domains"]` — spatial domain labels for each spot or cell
 
-### SVGs
-Per gene in `adata.var`:
-- `spartan_saq`, `spartan_saq_pval`, `spartan_saq_fdr`
-- `spartan_saq_rank` (1 = highest SAQ)
-- `adata.var[key_added]` boolean mask (significant SVGs)
+### Graphs (stored in `adata.obsp`)
+- `adata.obsp["spartan_spatial_graph"]` — spatial proximity graph
+- `adata.obsp["spartan_spatial_weights"]` — spatial weight matrix
+- `adata.obsp["spartan_lsa_graph"]` — local spatial activation graph
+- `adata.obsp["spartan_gene_graph"]` — gene expression similarity graph
+- `adata.obsp["spartan_joint_graph"]` — multiplex joint graph used for clustering
 
-## Citation
-Add a `CITATION.cff` (template included) once you have a preprint/DOI.
+### Spatially variable genes (SVGs)
+- `adata.var["spartan_saq"]` — Spatial Activation Quotient (SAQ) score
+- `adata.var["spartan_saq_pval"]` — permutation-based p-value
+- `adata.var["spartan_saq_fdr"]` — FDR-adjusted p-value
+- `adata.var["spartan_svg"]` — boolean indicator of significant SVGs
+- `adata.var["spartan_saq_rank"]` — SAQ-based gene ranking
+
+---
+
+## Tested environment
+
+SPARTAN was developed and tested with the following package versions:
+
+- numpy 2.2.6
+- scipy 1.15.2
+- anndata 0.11.4
+- scanpy 1.11.4
+- squidpy 1.6.5
+- igraph 0.11.8
+- leidenalg 0.10.2
+- joblib 1.5.1
+- statsmodels 0.14.5
+- matplotlib 3.10.5
+- spatialdata 0.4.0
+
+For exact reproducibility, use the provided `environment.yml`.
+
+
+
+
+
