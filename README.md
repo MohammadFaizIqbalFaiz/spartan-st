@@ -21,7 +21,7 @@ transcriptomics technologies.
 
 Most spatial clustering methods rely on two signals:
 (1) physical proximity and (2) transcriptomic similarity.
-SPARTAN introduces a third signal — **local spatial activation (LSA)** —
+SPARTAN introduces a third signal, **local spatial activation (LSA)**, 
 which quantifies how strongly a spot’s molecular state deviates from its local neighborhood.
 
 SPARTAN constructs three graphs:
