@@ -74,7 +74,7 @@ for robust, permutation-based detection of **spatially variable genes**.
 
 ## Installation
 
-### Recommended (conda)
+### Recommended (conda, from source)
 
 ```bash
 conda env create -f environment.yml
