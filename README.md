@@ -4,6 +4,23 @@
 <p align="center">
   <img src="assets/spartan_conceptual_framework_600dpi.png" width="900"/>
 </p>
+<p align="center">
+  <a href="https://github.com/MohammadFaizIqbalFaiz/spartan-st">
+    <img src="https://img.shields.io/badge/code-GitHub-black"/>
+  </a>
+  <a href="https://pypi.org/project/spartan-st/">
+    <img src="https://img.shields.io/pypi/v/spartan-st"/>
+  </a>
+  <a href="https://pypi.org/project/spartan-st/">
+    <img src="https://img.shields.io/pypi/pyversions/spartan-st"/>
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green"/>
+  </a>
+</p>
+<a href="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/discussions">
+  <img src="https://img.shields.io/badge/community-discussions-blue"/>
+</a>
 
 <p align="center">
   <em>Conceptual overview of SPARTAN for spatial domain identification and spatially variable gene discovery.</em>
