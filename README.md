@@ -49,7 +49,7 @@ for robust, permutation-based detection of **spatially variable genes**.
 - Explicit modeling of local spatial activation
 - Robust SVG discovery using the Spatial Activation Quotient (SAQ)
 - Scanpy-style API (`spartan.tl`, `spartan.pl`)
-- Compatible with AnnData and SpatialData tables
+- Compatible with AnnData and SpatialData frameworks
 - Scales across sequencing- and imaging-based spatial technologies
 
 ---
