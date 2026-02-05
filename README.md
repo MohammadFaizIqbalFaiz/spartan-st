@@ -1,5 +1,12 @@
 <p align="center">
-  <img src="assets/spartan-logo.svg" width="520"/>
+  <img src="assets/Spartan_logo.png" width="520"/>
+</p>
+<p align="center">
+  <img src="assets/spartan_conceptual_framework_600dpi.png" width="900"/>
+</p>
+
+<p align="center">
+  <em>Conceptual overview of SPARTAN for spatial domain identification and spatially variable gene discovery.</em>
 </p>
 
 # SPARTAN
