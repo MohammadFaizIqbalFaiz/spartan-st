@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "SPARTAN"
+message: "If you use SPARTAN in your research, please cite it."
+type: software
+authors:
+  - family-names: "Faiz"
+    given-names: "Mohammad Faiz Iqbal"
+license: BSD-3-Clause
+repository-code: "https://github.com/<YOUR_GITHUB_ORG>/spartan"

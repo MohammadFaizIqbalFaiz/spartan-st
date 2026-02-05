@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "spartan-st"
+version = "0.1.0"
+description = "SPARTAN: Spatial domains identification and spatially variable gene discovery for spatial transcriptomics."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "BSD-3-Clause"}
+authors = [{name = "Mohammad Faiz Iqbal Faiz"}]
+dependencies = [
+  "numpy>=2.2",
+  "scipy>=1.15",
+  "anndata>=0.11",
+  "scanpy>=1.11",
+  "squidpy>=1.6",
+  "igraph>=0.11",
+  "leidenalg>=0.10",
+  "joblib>=1.5",
+  "statsmodels>=0.14",
+  "matplotlib>=3.10",
+  "spatialdata>=0.4",
+]
+
+[project.optional-dependencies]
+plot = ["spatialdata-plot"]
+dev = ["pytest", "ruff", "black", "build", "twine"]
+
+[project.urls]
+Homepage = "https://github.com/<YOUR_GITHUB_ORG>/spartan"
+Issues = "https://github.com/<YOUR_GITHUB_ORG>/spartan/issues"
+
+[project.scripts]
+spartan = "spartan.cli:main"
