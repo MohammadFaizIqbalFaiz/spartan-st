@@ -29,7 +29,7 @@ for **spatial domain identification** and **spatially variable gene (SVG) discov
 in spatial transcriptomics data.
 
 Spartan integrates spatial proximity, gene expression connectivity, and **local spatial
-activation (LSA)**,a neighborhood-dependent spatial autocorrelation signal,
+activation (LSA)**, a neighborhood-dependent spatial autocorrelation signal,
 to resolve biologically coherent tissue domains and identify genes associated with
 localized spatial structure.
 
