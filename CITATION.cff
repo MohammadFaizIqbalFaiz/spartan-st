@@ -1,9 +1,8 @@
 cff-version: 1.2.0
-title: "SPARTAN"
-message: "If you use SPARTAN in your research, please cite it."
-type: software
+title: "Spartan: Spatial domain identification and spatially variable gene discovery"
+message: "If you use Spartan, please cite this repository."
 authors:
-  - family-names: "Faiz"
-    given-names: "Mohammad Faiz Iqbal"
-license: BSD-3-Clause
-repository-code: "https://github.com/<YOUR_GITHUB_ORG>/spartan"
+  - family-names: Faiz
+    given-names: Mohammad Faiz Iqbal
+license: MIT
+repository-code: "https://github.com/YOUR_USERNAME/YOUR_REPO"
