@@ -17,16 +17,16 @@
 </a>
 
 <p align="center">
-  <em>Conceptual overview of SPARTAN for spatial domain identification and spatially variable gene discovery.</em>
+  <em>Conceptual overview of Spartan for spatial domain identification and spatially variable gene discovery.</em>
 </p>
 
-# SPARTAN
+# Spartan
 
-**SPARTAN** (Spatial Activation–Aware Transcriptomic Analysis Network) is a Python toolkit
+**Spartan** (Spatial Activation–Aware Transcriptomic Analysis Network) is a Python toolkit
 for **spatial domain identification** and **spatially variable gene (SVG) discovery**
 in spatial transcriptomics data.
 
-SPARTAN integrates spatial proximity, gene expression similarity, and **local spatial
+Spartan integrates spatial proximity, gene expression similarity, and **local spatial
 activation (LSA)**, a neighborhood-dependent spatial autocorrelation signal,
 to resolve biologically coherent tissue domains and identify genes associated with
 localized spatial structure. The method is designed to preserve anatomical boundaries,
@@ -39,10 +39,10 @@ transcriptomics technologies.
 
 Most spatial clustering methods rely on two signals:
 (1) physical proximity and (2) transcriptomic similarity.
-SPARTAN introduces a third signal, **local spatial activation (LSA)**, 
+Spartan introduces a third signal, **local spatial activation (LSA)**, 
 which quantifies how strongly a spot’s molecular state deviates from its local neighborhood.
 
-SPARTAN constructs three graphs:
+Spartan constructs three graphs:
 
 1. **Spatial graph (S)**  
    Encodes physical proximity between neighboring spots or cells.
@@ -128,7 +128,7 @@ adata.var.sort_values("spartan_saq", ascending=False).head(10)
 
 ## Tested environment
 
-SPARTAN was developed and tested with the following package versions:
+Spartan was developed and tested with the following package versions:
 
 - numpy 2.2.6
 - scipy 1.15.2
