@@ -4,6 +4,7 @@ from typing import Optional, Tuple, Union
 import numpy as np
 import scipy.sparse as sp
 from scipy.sparse import csr_matrix
+from scipy.sparse import coo_matrix
 
 import scanpy as sc
 import squidpy as sq
