@@ -10,6 +10,8 @@
 <p align="center">
   <a href="https://github.com/MohammadFaizIqbalFaiz/spartan-st">
     <img src="https://img.shields.io/badge/code-GitHub-black"/>
+    <img src="https://img.shields.io/github/v/release/MohammadFaizIqbalFaiz/spartan-st"/>
+
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green"/>
