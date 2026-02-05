@@ -8,12 +8,6 @@
   <a href="https://github.com/MohammadFaizIqbalFaiz/spartan-st">
     <img src="https://img.shields.io/badge/code-GitHub-black"/>
   </a>
-  <a href="https://pypi.org/project/spartan-st/">
-    <img src="https://img.shields.io/pypi/v/spartan-st"/>
-  </a>
-  <a href="https://pypi.org/project/spartan-st/">
-    <img src="https://img.shields.io/pypi/pyversions/spartan-st"/>
-  </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green"/>
   </a>
@@ -86,10 +80,6 @@ for robust, permutation-based detection of **spatially variable genes**.
 conda env create -f environment.yml
 conda activate biogis
 pip install -e .
-```
-### Pip 
-```bash
-pip install spartan-st
 ```
 
 ## Quickstart (AnnData)
