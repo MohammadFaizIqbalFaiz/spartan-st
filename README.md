@@ -46,7 +46,7 @@ Spartan constructs three graphs:
 
 1. **Spatial graph (S)** — physical proximity  
 2. **Gene expression connectivity graph (G)** — transcriptomic similarity (PCA space)  
-3. **Local Spatial Activation graph (L)** — neighborhood-dependent spatial autocorrelation  
+3. **Local Spatial Activation graph (L)** — neighborhood-dependent activation signal  
 
 These graphs are combined into a **multiplex joint graph**, which is partitioned using
 the Leiden algorithm to identify **spatial domains**.
