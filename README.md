@@ -24,7 +24,7 @@
 
 # Spartan
 
-**Spartan** (Spatial Activation–Aware Transcriptomic Analysis Network) is a Python toolkit
+**Spartan** (Spatial Activation Aware Transcriptomic Analysis Network) is a Python toolkit
 for **spatial domain identification** and **spatially variable gene (SVG) discovery**
 in spatial transcriptomics data.
 
