@@ -28,8 +28,8 @@
 for **spatial domain identification** and **spatially variable gene (SVG) discovery**
 in spatial transcriptomics data.
 
-Spartan integrates spatial proximity, gene expression connectivity, and **local spatial
-activation (LSA)**, a neighborhood-dependent spatial autocorrelation signal,
+Spartan integrates spatial proximity, gene expression connectivity, and **Local Spatial
+Activation (LSA)**, a neighborhood-dependent spatial autocorrelation signal,
 to resolve biologically coherent tissue domains and identify genes associated with
 localized spatial structure.
 
@@ -39,14 +39,14 @@ localized spatial structure.
 
 Most spatial clustering methods rely on two signals:
 (1) physical proximity and (2) transcriptomic similarity.
-Spartan introduces a third signal, **local spatial activation (LSA)**, which quantifies
+Spartan introduces a third signal, **Local Spatial Activation (LSA)**, which quantifies
 how strongly a spot’s molecular state deviates from its local neighborhood.
 
 Spartan constructs three graphs:
 
 1. **Spatial graph (S)** — physical proximity  
 2. **Gene expression connectivity graph (G)** — transcriptomic similarity (PCA space)  
-3. **Local spatial activation graph (L)** — neighborhood-dependent spatial autocorrelation  
+3. **Local Spatial Activation graph (L)** — neighborhood-dependent spatial autocorrelation  
 
 These graphs are combined into a **multiplex joint graph**, which is partitioned using
 the Leiden algorithm to identify **spatial domains**.
@@ -58,7 +58,7 @@ for robust detection of **spatially variable genes**.
 ## Key features
 
 - Multiplex graph-based spatial domain identification
-- Explicit modeling of local spatial activation
+- Explicit modeling of Local Spatial Activation
 - Robust SVG discovery using the Spatial Activation Quotient (SAQ)
 - Scanpy-style API (`spartan.tl`, `spartan.pl`)
 - Compatible with AnnData and SpatialData frameworks
