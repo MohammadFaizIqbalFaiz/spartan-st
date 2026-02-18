@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/spartan_conceptual_framework_600dpi.png" width="900"/>
+  <img src="assets/SpartanConceptualFramework.png" width="900"/>
 </p>
 
 <p align="center">
