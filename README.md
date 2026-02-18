@@ -48,7 +48,7 @@ Spartan constructs three graphs:
 2. **Gene expression connectivity graph (G)** — transcriptomic similarity (PCA space)  
 3. **Local Spatial Activation graph (L)** — neighborhood-dependent activation signal  
 
-These graphs are combined into a **multiplex joint graph**, which is partitioned using
+These graphs are combined into an **aggregated graph**, which is partitioned using
 the Leiden algorithm to identify **spatial domains**.
 The same activation signal is used to compute a **Spatial Activation Quotient (SAQ)**
 for robust detection of **spatially variable genes**.
