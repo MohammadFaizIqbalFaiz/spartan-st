@@ -29,8 +29,11 @@ plot = ["spatialdata-plot"]
 dev = ["pytest", "ruff", "black", "build", "twine"]
 
 [project.urls]
-Homepage = "https://github.com/<YOUR_GITHUB_ORG>/spartan"
-Issues = "https://github.com/<YOUR_GITHUB_ORG>/spartan/issues"
+Homepage = "https://github.com/MohammadFaizIqbalFaiz/spartan-st"
+Issues = "https://github.com/MohammadFaizIqbalFaiz/spartan-st/issues"
 
 [project.scripts]
 spartan = "spartan.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spartan"]
