@@ -1,13 +1,58 @@
-"""Tool functions (Scanpy-like)."""
+"""Tool functions (Scanpy-like public API)."""
 
 from __future__ import annotations
-from typing import Optional
-from anndata import AnnData
-from scipy.sparse import csr_matrix
 
 from ._core import (
+    pre_process_imaging,
+    pre_process_sequencing,
+    normalize,
+    local_spatial_activation,
+    vec_norm,
+    build_spatial_graph,
+    perform_pca,
+    build_lsa_graph,
+    build_gene_expression_connectivity_graph,
+    spartan_build_graphs,
+    sparse_to_coord_weight_dict,
+    build_graph_cache,
+    mix_weights,
+    compute_nLSAS,
+    process_alpha_light,
+    run_grid_search_parallel_alpha_light,
+    prune_results_nLSAS,
+    summarize_all_alphas_nLSAS,
+    initiate_alpha_selection,
+    consensus_alpha,
+    to_igraph,
+    perform_leiden_clustering,
     spartan_spatial_domains,
     spartan_svg,
 )
 
-__all__ = ["spartan_spatial_domains", "spartan_svg"]
+__all__ = [
+    "pre_process_imaging",
+    "pre_process_sequencing",
+    "normalize",
+    "local_spatial_activation",
+    "vec_norm",
+    "build_spatial_graph",
+    "perform_pca",
+    "build_lsa_graph",
+    "build_gene_expression_connectivity_graph",
+    "spartan_build_graphs",
+    "sparse_to_coord_weight_dict",
+    "build_graph_cache",
+    "mix_weights",
+    "compute_nLSAS",
+    "process_alpha_light",
+    "run_grid_search_parallel_alpha_light",
+    "prune_results_nLSAS",
+    "summarize_all_alphas_nLSAS",
+    "initiate_alpha_selection",
+    "consensus_alpha",
+    "to_igraph",
+    "perform_leiden_clustering",
+    "spartan_spatial_domains",
+    "spartan_svg",
+]
+
