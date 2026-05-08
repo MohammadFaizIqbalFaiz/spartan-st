@@ -1,4 +1,4 @@
-name: biogis
+name: spartan-paperS
 channels:
   - conda-forge
 dependencies:
@@ -102,7 +102,6 @@ dependencies:
   - executing=2.2.0
   - expat=2.7.0
   - fasteners=0.19
-  - fcsparser=0.2.8
   - filelock=3.18.0
   - flexcache=0.3
   - flexparser=0.4
@@ -387,7 +386,6 @@ dependencies:
   - rav1e=0.6.6
   - rdma-core=57.0
   - re2=2024.07.02
-  - readfcs=1.1.8
   - readline=8.2
   - referencing=0.36.2
   - requests=2.32.3
@@ -509,14 +507,12 @@ dependencies:
       - array-api-compat==1.12.0
       - arrow==1.3.0
       - async-lru==2.0.5
-      - blaze==0.10.1
       - bleach==6.2.0
       - blinker==1.9.0
       - cairocffi==1.7.1
       - cairosvg==2.8.2
       - celltypist==1.7.1
       - cssselect2==0.8.0
-      - datashape==0.5.2
       - dcor==0.6
       - decoupler==2.1.0
       - defusedxml==0.7.1
@@ -553,7 +549,6 @@ dependencies:
       - kiwisolver==1.4.9
       - legendkit==0.3.6
       - llvmlite==0.44.0
-      - marsilea==0.5.3
       - matplotlib==3.10.5
       - matplotlib-venn==1.1.2
       - mistune==3.1.3
@@ -564,8 +559,6 @@ dependencies:
       - notebook==7.4.3
       - notebook-shim==0.2.4
       - numdifftools==0.9.41
-      - nvidia-nccl-cu12==2.27.5
-      - odo==0.5.0
       - openpyxl==3.1.5
       - overrides==7.7.0
       - pandas==2.3.1
@@ -573,16 +566,11 @@ dependencies:
       - pillow==11.3.0
       - plotly==6.2.0
       - prometheus-client==0.22.1
-      - ptitprince==0.2.7
       - pycairo==1.28.0
       - pypdl==1.5.4
-      - pysodb==1.0.0
       - python-json-logger==3.3.0
       - rfc3339-validator==0.1.4
       - rfc3986-validator==0.1.1
-      - rpy2==3.6.2
-      - rpy2-rinterface==3.6.2
-      - rpy2-robjects==3.6.1
       - scanpy==1.11.4
       - scikit-learn==1.7.1
       - scikit-misc==0.5.1
@@ -591,7 +579,6 @@ dependencies:
       - session-info2==0.2.1
       - sniffio==1.3.1
       - spanve==0.1.6
-      - sparx==0.0.2
       - spatialde==1.1.3
       - sqlalchemy==2.0.43
       - statsmodels==0.14.5
@@ -606,4 +593,3 @@ dependencies:
       - werkzeug==3.1.3
       - widgetsnbextension==4.0.14
       - xgboost==3.0.2
-prefix: /home/v16847mf/miniforge3/envs/biogis
