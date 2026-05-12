@@ -494,10 +494,6 @@ If you use Spartan, please cite:
 }
 ```
 
-Please update the citation once the final manuscript details are available.
-
----
-
 ## License
 
 This project is released under the license specified in the repository.
