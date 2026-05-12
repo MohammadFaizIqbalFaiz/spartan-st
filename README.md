@@ -21,114 +21,174 @@
 <p align="center">
   <em>Conceptual overview of Spartan for spatial domain identification and spatially variable gene discovery.</em>
 </p>
-
 # Spartan
 
-**Spartan** (Spatial Activation Aware Transcriptomic Analysis Network) is a Python toolkit
-for **spatial domain identification** and **spatially variable gene (SVG) discovery**
-in spatial transcriptomics data.
+**Spartan** is an activation-aware spatial transcriptomics framework for spatial domain identification and spatially variable gene discovery.
 
-Spartan integrates spatial proximity, gene expression connectivity, and **Local Spatial
-Activation (LSA)**, a neighborhood-dependent transition aware signal,
-to resolve biologically coherent tissue domains and identify genes associated with
-localized spatial structure.
+Spartan integrates spatial topology, gene-expression connectivity, and Local Spatial Activation (LSA) into an aggregated graph for unsupervised spatial domain detection. The framework is designed for multiple spatial transcriptomics technologies, including imaging-based datasets such as MERFISH, sequencing-based datasets such as Stereo-seq, and high-resolution platforms such as Visium HD.
 
 ---
 
-## Conceptual overview
+## Overview
 
-Most spatial clustering methods rely on two signals:
-(1) physical proximity and (2) transcriptomic similarity.
-Spartan introduces a third signal, **Local Spatial Activation (LSA)**, which quantifies
-how strongly a spot’s molecular state deviates from its local neighborhood.
+Spatial transcriptomics datasets contain both molecular and spatial information. Many spatial clustering approaches primarily model local similarity or spatial smoothing. Spartan instead introduces a Local Spatial Activation graph that captures neighborhood-conditioned transcriptional deviation across spatial neighborhoods.
 
-Spartan constructs three graphs:
+Spartan constructs three complementary graphs:
 
-1. **Spatial graph (S)** — physical proximity  
-2. **Gene expression connectivity graph (G)** — transcriptomic similarity (PCA space)  
-3. **Local Spatial Activation graph (L)** — neighborhood-dependent activation signal  
+- **Spatial graph (`S`)** — captures physical neighborhood topology.
+- **Gene-expression graph (`G`)** — captures transcriptomic similarity in reduced expression space.
+- **Local Spatial Activation graph (`L`)** — captures local transcriptional activation/deviation structure across spatial neighborhoods.
 
-These graphs are combined into an **aggregated graph**, which is partitioned using
-the Leiden algorithm to identify **spatial domains**.
-The same activation signal is used to compute a **Spatial Activation Quotient (SAQ)**
-for robust detection of **spatially variable genes**.
+These graphs are combined into an aggregated graph:
 
----
+```math
+J = (\alpha-\beta_1)L + (1-\alpha)G + (\alpha-\beta_2)S
+```
 
-## Key features
+Leiden clustering is then applied to the aggregated graph to identify spatial domains.
 
-- Multiplex graph-based spatial domain identification
-- Explicit modeling of Local Spatial Activation
-- Robust SVG discovery using the Spatial Activation Quotient (SAQ)
-- Scanpy-style API (`spartan.tl`, `spartan.pl`)
-- Compatible with AnnData and SpatialData frameworks
-- Scales across sequencing- and imaging-based technologies
+Spartan also provides a Spatial Activation Quotient (SAQ) workflow for identifying spatially variable genes using the LSA graph.
 
 ---
 
 ## Installation
 
-### Recommended (conda, from source)
+### General package environment
+
+For general users, create the lightweight Spartan environment:
 
 ```bash
 conda env create -f envs/environment.core.yml
 conda activate spartan-core
-pip install .
+pip install -e .
 ```
 
-### Reproduce paper results (reviewers)
+### Paper reproducibility environment
+
+For exact reproduction of manuscript analyses and tutorial notebooks:
 
 ```bash
-mamba env create -f envs/environment.paper.lock.yml
-mamba activate spartan-paperS
+conda env create -f envs/environment.paper.lock.yml
+conda activate spartan-paper
+pip install -e .
 ```
+
+The paper environment contains the pinned package versions used for the manuscript analyses.
 
 ---
 
-## Quickstart (AnnData)
+## Quickstart
+
+Spartan follows a Scanpy-like API. Most user-facing functions are available through `spartan.tl`.
 
 ```python
 import spartan as sp
 
+# Optional preprocessing for imaging-based spatial transcriptomics
+adata = sp.tl.pre_process_imaging(adata)
+
+# Run Spartan spatial domain identification
 sp.tl.spartan_spatial_domains(
     adata,
+    spatial_coord="generic",
+    spatial_neighborhood="knn",
+    spatial_neighs=10,
+    gene_neighs=15,
+    alpha=0.80,
+    beta1=0.10,
+    beta2=0.40,
+    resolution=1.0,
+    seed=1,
     key_added="spartan_domains",
 )
 
+# Inspect predicted domains
 adata.obs["spartan_domains"].value_counts()
 
+# Run Spartan SAQ/SVG analysis
 sp.tl.spartan_svg(
     adata,
     lsa_graph=adata.obsp["spartan_lsa_graph"],
+    key_added="spartan_svg",
 )
 
+# View top SAQ-ranked genes
 adata.var.sort_values("spartan_saq", ascending=False).head(10)
+```
+
+For sequencing-based spatial transcriptomics, use:
+
+```python
+adata = sp.tl.pre_process_sequencing(adata)
 ```
 
 ---
 
-## Outputs
+## Main outputs
 
 ### Spatial domains
-- `adata.obs["spartan_domains"]` — spatial domain labels
 
-### Graphs (`adata.obsp`)
-- `spartan_spatial_graph`
-- `spartan_spatial_weights`
-- `spartan_lsa_graph`
-- `spartan_gene_graph`
-- `spartan_joint_graph`
+Spartan stores predicted spatial domain labels in:
 
-### Spatially variable genes
-- `spartan_saq`
-- `spartan_saq_pval`
-- `spartan_saq_fdr`
-- `spartan_svg`
-- `spartan_saq_rank`
+```python
+adata.obs["spartan_domains"]
+```
+
+or in the user-defined column specified by `key_added`.
+
+### Graphs stored in `adata.obsp`
+
+Spartan stores the graph components used for spatial domain detection:
+
+| Key | Description |
+|---|---|
+| `spartan_spatial_graph` | Spatial neighborhood adjacency graph |
+| `spartan_spatial_weights` | Row-normalized spatial weight matrix |
+| `spartan_lsa_graph` | Local Spatial Activation graph |
+| `spartan_gene_graph` | Gene-expression connectivity graph |
+| `spartan_joint_graph` | Aggregated graph used for Leiden clustering |
+
+### Spatially variable gene outputs
+
+The SAQ/SVG workflow stores gene-level statistics in `adata.var`:
+
+| Key | Description |
+|---|---|
+| `spartan_saq` | Spatial Activation Quotient score |
+| `spartan_saq_pval` | SAQ p-value |
+| `spartan_saq_fdr` | Benjamini–Hochberg adjusted FDR |
+| `spartan_svg` | Boolean SVG calls |
+| `spartan_saq_rank` | Gene ranking by SAQ score |
 
 ---
 
-## Core API
+## Core user-facing API
+
+### Preprocessing
+
+#### `pre_process_imaging`
+
+```python
+adata = sp.tl.pre_process_imaging(adata)
+```
+
+Preprocesses imaging-based spatial transcriptomics datasets such as MERFISH and Vizgen MERFISH.
+
+This workflow is intended for single-cell imaging datasets, where measured genes are typically retained and standard normalization/log transformation is applied before graph construction.
+
+#### `pre_process_sequencing`
+
+```python
+adata = sp.tl.pre_process_sequencing(adata)
+```
+
+Preprocesses sequencing-based spatial transcriptomics datasets such as Stereo-seq, Visium, and Visium HD.
+
+This workflow can include filtering, normalization, log transformation, highly variable gene selection, scaling, and PCA-compatible preparation.
+
+---
+
+## Spatial domain identification
 
 ### `spartan_spatial_domains`
 
@@ -136,49 +196,267 @@ adata.var.sort_values("spartan_saq", ascending=False).head(10)
 sp.tl.spartan_spatial_domains(
     adata,
     spatial_coord="grid",
-    spatial_neighborhood="knn",
     spatial_neighs=6,
     spatial_rings=2,
+    spatial_neighborhood="knn",
     total_pca_comps=50,
     pca_comps_extract=30,
+    gene_coord="generic",
     gene_neighs=15,
-    alpha=0.8,
-    beta1=0.1,
-    beta2=0.4,
+    alpha=0.80,
+    beta1=0.10,
+    beta2=0.40,
     resolution=1.0,
     seed=1,
     key_added="spartan_domains",
+    copy=False,
 )
 ```
 
-**Key parameters**
-- `spatial_coord`: `"grid"` (Visium/HD) or `"generic"` (MERFISH)
-- `spatial_neighborhood`: `"knn"` or `"delaunay"`
-- `alpha`: balances spatial/LSA vs gene expression
-- `beta1`, `beta2`: weights for LSA and spatial graphs (`beta1 + beta2 = 0.5`)
-- `resolution`: Leiden resolution parameter
+Runs the complete Spartan spatial domain workflow:
 
-Updates `adata` in place and stores graphs in `adata.obsp`.
+1. Constructs the spatial graph `S`.
+2. Constructs the Local Spatial Activation graph `L`.
+3. Constructs the gene-expression connectivity graph `G`.
+4. Forms the aggregated graph `J`.
+5. Runs Leiden clustering.
+6. Stores spatial domains in `adata.obs[key_added]`.
+
+The aggregated graph is:
+
+```math
+J = (\alpha-\beta_1)L + (1-\alpha)G + (\alpha-\beta_2)S
+```
+
+where:
+
+- `L` is the Local Spatial Activation graph,
+- `G` is the gene-expression connectivity graph,
+- `S` is the spatial adjacency graph.
+
+### Key parameters
+
+| Parameter | Description |
+|---|---|
+| `spatial_coord` | Coordinate mode used by Squidpy. Common values are `"grid"` for Visium-like data and `"generic"` for single-cell imaging data. |
+| `spatial_neighborhood` | Spatial graph construction method: `"knn"` or `"delaunay"`. |
+| `spatial_neighs` | Number of spatial neighbors for KNN-based spatial graph construction. |
+| `spatial_rings` | Number of spatial rings for grid-based datasets. |
+| `total_pca_comps` | Total number of principal components computed. |
+| `pca_comps_extract` | Number of principal components used for graph construction. |
+| `gene_coord` | Coordinate mode used for gene-expression graph construction. |
+| `gene_neighs` | Number of neighbors for the gene-expression connectivity graph. |
+| `alpha` | Graph integration parameter controlling the balance between activation/spatial structure and expression connectivity. |
+| `beta1` | Offset controlling the effective LSA graph contribution. |
+| `beta2` | Offset controlling the effective spatial graph contribution. |
+| `resolution` | Leiden resolution parameter controlling clustering granularity. |
+| `seed` | Random seed for reproducibility. |
+| `key_added` | Column name used to store Spartan domain labels in `adata.obs`. |
+| `copy` | If `True`, returns a modified copy of `adata`; otherwise updates `adata` in place. |
+
+By default, `beta1 + beta2 = 0.5`.
 
 ---
+
+## Graph construction only
+
+### `spartan_build_graphs`
+
+```python
+sp.tl.spartan_build_graphs(
+    adata,
+    spatial_coord="grid",
+    spatial_neighs=6,
+    spatial_rings=2,
+    spatial_neighborhood="knn",
+    total_pca_comps=50,
+    pca_comps_extract=30,
+    gene_coord="generic",
+    gene_neighs=15,
+    seed=1,
+    copy=False,
+)
+```
+
+Builds and stores Spartan graph components without running Leiden clustering.
+
+This is useful for:
+
+- inspecting graph structure,
+- running custom parameter sweeps,
+- alpha-selection workflows,
+- reusing precomputed graphs,
+- separating graph construction from clustering.
+
+The function stores:
+
+```python
+adata.obsp["spartan_spatial_graph"]
+adata.obsp["spartan_spatial_weights"]
+adata.obsp["spartan_lsa_graph"]
+adata.obsp["spartan_gene_graph"]
+```
+
+---
+
+## Alpha-selection and operating-regime analysis
+
+Spartan includes utilities for evaluating dataset-level graph integration regimes across alpha and resolution values.
+
+These workflows are intended for **benchmarking-oriented analysis** when ground-truth annotations are available. Metrics such as NMI, homogeneity, and completeness are used to characterize stable operating regimes.
+
+Importantly, Spartan spatial domain detection itself remains unsupervised: graph construction, graph integration, Leiden clustering, and nLSAS-based pruning do not use ground-truth labels.
+
+### `initiate_alpha_selection`
+
+```python
+summary_df, results_df = sp.tl.initiate_alpha_selection(
+    adata,
+    lower_alpha=0.50,
+    upper_alpha=0.90,
+    step_alpha=0.01,
+    lower_resolution=0.50,
+    upper_resolution=2.00,
+    step_resolution=0.05,
+    ground_truth="ground_truth",
+    config="lsg",
+    seed=1,
+)
+```
+
+Performs alpha and resolution analysis for a given graph-integration configuration.
+
+The workflow can be used to evaluate stable dataset-level alpha regimes rather than isolated sample-specific optima.
+
+### `consensus_alpha`
+
+```python
+alpha_star = sp.tl.consensus_alpha(summary_df)
+```
+
+Computes a dataset-level consensus alpha from alpha-selection summaries.
+
+### nLSAS-based pruning
+
+Spartan supports nLSAS-based filtering of candidate configurations after graph construction and clustering.
+
+nLSAS is used as an unsupervised stability/coherence criterion to reduce the configuration space before downstream benchmarking and visualization.
+
+Ground-truth labels are not used in nLSAS pruning.
+
+---
+
+## Spatially variable gene discovery
 
 ### `spartan_svg`
 
 ```python
 sp.tl.spartan_svg(
     adata,
-    lsa_graph,
+    lsa_graph=adata.obsp["spartan_lsa_graph"],
+    layer="log1pX",
     n_permutations=1000,
-    fdr_threshold=0.05,
+    n_cores=8,
+    alpha_svg=0.05,
+    chunk_size=200,
     seed=1,
+    key_added="spartan_svg",
+    copy=False,
 )
 ```
 
-Adds SAQ statistics to `adata.var`.
+Runs Spartan spatially variable gene discovery using the Spatial Activation Quotient (SAQ).
+
+SAQ measures how strongly each gene aligns with the Local Spatial Activation graph.
+
+The function stores the following columns in `adata.var`:
+
+```python
+adata.var["spartan_saq"]
+adata.var["spartan_saq_pval"]
+adata.var["spartan_saq_fdr"]
+adata.var["spartan_svg"]
+adata.var["spartan_saq_rank"]
+```
+
+---
+
+## Plotting API
+
+Spartan provides lightweight plotting helpers in `spartan.pl`.
+
+### Spatial domains
+
+```python
+sp.pl.spatial_domains(
+    adata,
+    color="spartan_domains",
+)
+```
+
+### SVG table
+
+```python
+sp.pl.svg_table(
+    adata,
+    n=20,
+)
+```
+
+For publication-quality plots, Spartan outputs can also be visualized using Scanpy, Squidpy, Matplotlib, or SpatialData plotting utilities.
+
+---
+
+## Tutorial notebooks
+
+Reviewer-oriented tutorial notebooks are available in the [`tutorials/`](tutorials) directory.
+
+| Notebook | Description |
+|---|---|
+| `ImagingBasedSpartan.ipynb` | MERFISH imaging-based workflow tutorial |
+| `SequencingBasedSpartan.ipynb` | Stereo-seq sequencing-based workflow tutorial |
+| `VisiumHDAnalysisSpartan.ipynb` | High-resolution Visium HD analysis and main figure reproduction |
+| `SpartanSVG.ipynb` | SAQ/SVG discovery workflow |
+
+These notebooks demonstrate:
+
+- imaging-based spatial domain analysis,
+- sequencing-based spatial domain analysis,
+- high-resolution Visium HD biological interpretation,
+- dataset-level alpha operating-regime analysis,
+- nLSAS-based configuration filtering,
+- SAQ-based spatially variable gene discovery,
+- reproduction of key manuscript analyses and figure panels.
+
+---
+
+## Reproducibility
+
+Spartan provides two environments:
+
+### General user environment
+
+```bash
+conda env create -f envs/environment.core.yml
+conda activate spartan-core
+pip install -e .
+```
+
+### Paper reproduction environment
+
+```bash
+conda env create -f envs/environment.paper.lock.yml
+conda activate spartan-paper
+pip install -e .
+```
+
+The paper-lock environment is intended for reproducing manuscript analyses and tutorial notebooks.
 
 ---
 
 ## Tested environment
+
+The core package has been tested with:
 
 - numpy 2.2.6
 - scipy 1.15.2
@@ -192,4 +470,41 @@ Adds SAQ statistics to `adata.var`.
 - matplotlib 3.10.5
 - spatialdata 0.4.0
 
-For exact reproducibility, use `envs/environment.paper.lock.yml`.
+---
+
+## Notes on graph construction
+
+The Local Spatial Activation graph can be asymmetric because local activation is neighborhood-conditioned. During spatial domain clustering, Spartan converts the aggregated graph into an igraph representation for Leiden clustering.
+
+Reciprocal graph entries are retained to preserve bidirectional local activation contributions between neighboring spots or cells. This allows Spartan to model the combined activation affinity between spatial neighbors during community detection.
+
+---
+
+## Citation
+
+If you use Spartan, please cite:
+
+```bibtex
+@article{faiz_spartan,
+  title = {Spartan: activation-aware spatial transcriptomics analysis for spatial domain identification and spatially variable gene discovery},
+  author = {Faiz, Mohammad Faiz Iqbal and others},
+  journal = {bioRxiv},
+  year = {2026}
+}
+```
+
+Please update the citation once the final manuscript details are available.
+
+---
+
+## License
+
+This project is released under the license specified in the repository.
+
+---
+
+## Contact
+
+For questions, issues, or contributions, please open an issue on GitHub:
+
+https://github.com/MohammadFaizIqbalFaiz/spartan-st
