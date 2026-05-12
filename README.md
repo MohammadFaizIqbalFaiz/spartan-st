@@ -21,6 +21,8 @@
 <p align="center">
   <em>Conceptual overview of Spartan for spatial domain identification and spatially variable gene discovery.</em>
 </p>
+
+
 ---
 ## Spartan
 
