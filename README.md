@@ -70,7 +70,7 @@ For exact reproduction of manuscript analyses and tutorial notebooks:
 
 ```bash
 conda env create -f envs/environment.paper.lock.yml
-conda activate spartan-paper
+conda activate spartan-paperS
 pip install -e .
 ```
 
