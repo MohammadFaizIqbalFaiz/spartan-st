@@ -22,7 +22,7 @@
   <em>Conceptual overview of Spartan for spatial domain identification and spatially variable gene discovery.</em>
 </p>
 ---
-# Spartan
+## Spartan
 
 **Spartan** is an activation-aware spatial transcriptomics framework for spatial domain identification and spatially variable gene discovery.
 
@@ -37,7 +37,7 @@ Spatial transcriptomics datasets contain both molecular and spatial information.
 Spartan constructs three complementary graphs:
 
 - **Spatial graph (`S`)** — captures physical neighborhood topology.
-- **Gene-expression graph (`G`)** — captures transcriptomic similarity in reduced expression space.
+- **Gene expression connectivity graph (`G`)** — captures transcriptomic similarity in reduced expression space.
 - **Local Spatial Activation graph (`L`)** — captures local transcriptional activation/deviation structure across spatial neighborhoods.
 
 These graphs are combined into an aggregated graph:
@@ -146,7 +146,7 @@ Spartan stores the graph components used for spatial domain detection:
 | `spartan_spatial_graph` | Spatial neighborhood adjacency graph |
 | `spartan_spatial_weights` | Row-normalized spatial weight matrix |
 | `spartan_lsa_graph` | Local Spatial Activation graph |
-| `spartan_gene_graph` | Gene-expression connectivity graph |
+| `spartan_gene_graph` | Gene expression connectivity graph |
 | `spartan_joint_graph` | Aggregated graph used for Leiden clustering |
 
 ### Spatially variable gene outputs
@@ -218,7 +218,7 @@ Runs the complete Spartan spatial domain workflow:
 
 1. Constructs the spatial graph `S`.
 2. Constructs the Local Spatial Activation graph `L`.
-3. Constructs the gene-expression connectivity graph `G`.
+3. Constructs the gene expression connectivity graph `G`.
 4. Forms the aggregated graph `J`.
 5. Runs Leiden clustering.
 6. Stores spatial domains in `adata.obs[key_added]`.
@@ -232,7 +232,7 @@ J = (\alpha-\beta_1)L + (1-\alpha)G + (\alpha-\beta_2)S
 where:
 
 - `L` is the Local Spatial Activation graph,
-- `G` is the gene-expression connectivity graph,
+- `G` is the gene expression connectivity graph,
 - `S` is the spatial adjacency graph.
 
 ### Key parameters
@@ -245,8 +245,8 @@ where:
 | `spatial_rings` | Number of spatial rings for grid-based datasets. |
 | `total_pca_comps` | Total number of principal components computed. |
 | `pca_comps_extract` | Number of principal components used for graph construction. |
-| `gene_coord` | Coordinate mode used for gene-expression graph construction. |
-| `gene_neighs` | Number of neighbors for the gene-expression connectivity graph. |
+| `gene_coord` | Coordinate mode used for gene expression graph construction. |
+| `gene_neighs` | Number of neighbors for the gene expression connectivity graph. |
 | `alpha` | Graph integration parameter controlling the balance between activation/spatial structure and expression connectivity. |
 | `beta1` | Offset controlling the effective LSA graph contribution. |
 | `beta2` | Offset controlling the effective spatial graph contribution. |
@@ -425,7 +425,6 @@ These notebooks demonstrate:
 - high-resolution Visium HD biological interpretation,
 - dataset-level alpha operating-regime analysis,
 - nLSAS-based configuration filtering,
-- SAQ-based spatially variable gene discovery,
 - reproduction of key manuscript analyses and figure panels.
 
 ---
