@@ -22,7 +22,7 @@
   <em>Conceptual overview of Spartan for spatial domain identification and spatially variable gene discovery.</em>
 </p>
 ---
-## Spartan
+# Spartan
 
 **Spartan** is an activation-aware spatial transcriptomics framework for spatial domain identification and spatially variable gene discovery.
 
