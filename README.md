@@ -416,8 +416,7 @@ Reviewer-oriented tutorial notebooks are available in the [`tutorials/`](tutoria
 |---|---|
 | `ImagingBasedSpartan.ipynb` | MERFISH imaging-based workflow tutorial |
 | `SequencingBasedSpartan.ipynb` | Stereo-seq sequencing-based workflow tutorial |
-| `VisiumHDAnalysisSpartan.ipynb` | High-resolution Visium HD analysis and main figure reproduction |
-| `SpartanSVG.ipynb` | SAQ/SVG discovery workflow |
+| `VisiumHDAnalysis Using Spartan.ipynb` | High-resolution Visium HD analysis and main figure reproduction |
 
 These notebooks demonstrate:
 
@@ -447,7 +446,7 @@ pip install -e .
 
 ```bash
 conda env create -f envs/environment.paper.lock.yml
-conda activate spartan-paper
+conda activate spartan-paperS
 pip install -e .
 ```
 
@@ -470,14 +469,6 @@ The core package has been tested with:
 - statsmodels 0.14.5
 - matplotlib 3.10.5
 - spatialdata 0.4.0
-
----
-
-## Notes on graph construction
-
-The Local Spatial Activation graph can be asymmetric because local activation is neighborhood-conditioned. During spatial domain clustering, Spartan converts the aggregated graph into an igraph representation for Leiden clustering.
-
-Reciprocal graph entries are retained to preserve bidirectional local activation contributions between neighboring spots or cells. This allows Spartan to model the combined activation affinity between spatial neighbors during community detection.
 
 ---
 
