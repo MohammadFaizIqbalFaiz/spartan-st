@@ -80,7 +80,7 @@ pip install .
 
 ```bash
 mamba env create -f envs/environment.paper.lock.yml
-mamba activate biogis
+mamba activate spartan-paperS
 ```
 
 ---
