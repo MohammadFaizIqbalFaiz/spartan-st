@@ -478,11 +478,17 @@ The core package has been tested with:
 If you use Spartan, please cite:
 
 ```bibtex
-@article{faiz_spartan,
-  title = {Spartan: activation-aware spatial transcriptomics analysis for spatial domain identification and spatially variable gene discovery},
-  author = {Faiz, Mohammad Faiz Iqbal and others},
-  journal = {bioRxiv},
-  year = {2026}
+@article {Faiz2026.02.18.706570,
+	author = {Faiz, Mohammad Faiz Iqbal and Jokl, Elliot and Jennings, Rachel and Piper Hanley, Karen and Sharrocks, Andrew and Iqbal, Mudassar and Baker, Syed Murtuza},
+	title = {Spartan: activation-aware framework for spatial domain and variable gene discovery},
+	elocation-id = {2026.02.18.706570},
+	year = {2026},
+	doi = {10.64898/2026.02.18.706570},
+	publisher = {Cold Spring Harbor Laboratory},
+	abstract = {Spatial transcriptomics is rapidly advancing toward single-cell-level resolution, revealing complex tissue architectures organized across continuous anatomical gradients. However, accurate identification of spatial domains remains a central computational challenge, as many existing clustering approaches blur anatomical boundaries, merge transitional zones, or fail to resolve localized microstructures. Here we introduce Spartan, an activation-aware multiplex graph framework for high-resolution domain discovery. Spartan integrates spatial topology and Local Spatial Activation (LSA), a neighborhood deviation signal that captures localized transcriptional heterogeneity often attenuated by similarity-based clustering. By jointly modeling cohesion within domains and localized activation structure, Spartan recovers anatomically aligned partitions across spatially resolved transcriptomics technologies including Visium HD, MERFISH, Stereo-seq, and STARmap. We further demonstrate its utility in a high-resolution Visium HD section of developing human esophagus and stomach, where activation-aware graph integration enables precise delineation of complex transitional regions such as the gastroesophageal junction and supports stable multi-scale domain recovery without fragile hyperparameter tuning. Beyond domain identification, Spartan leverages activation-aware structure to detect spatially variable genes associated with localized tissue remodeling. Spartan scales near-linearly with dataset size, providing a robust and interpretable framework for spatial systems-level analysis.Competing Interest StatementThe authors have declared no competing interest.BBSRC DTP},
+	URL = {https://www.biorxiv.org/content/early/2026/04/30/2026.02.18.706570},
+	eprint = {https://www.biorxiv.org/content/early/2026/04/30/2026.02.18.706570.full.pdf},
+	journal = {bioRxiv}
 }
 ```
 
