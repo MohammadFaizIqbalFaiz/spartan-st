@@ -624,6 +624,7 @@ These notebooks demonstrate:
 - dataset-level alpha operating-regime analysis,
 - nLSAS-based configuration filtering,
 - reproduction of key manuscript analyses and figure panels.
+- Spartan's SVG discovery utility across diverse spatially resolved transcriptomics technologies.
 
 ---
 
