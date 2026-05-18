@@ -486,6 +486,8 @@ gene_neighs = 15
 total_pca_comps = 50
 pca_comps_extract = 30
 ```
+---
+
 ## Graph construction only
 
 ### `spartan_build_graphs`
