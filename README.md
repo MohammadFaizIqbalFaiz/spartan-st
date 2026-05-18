@@ -614,6 +614,7 @@ Reviewer-oriented tutorial notebooks are available in the [`tutorials/`](tutoria
 | `ImagingBasedSpartan.ipynb` | MERFISH imaging-based workflow tutorial |
 | `SequencingBasedSpartan.ipynb` | Stereo-seq sequencing-based workflow tutorial |
 | `VisiumHDAnalysis Using Spartan.ipynb` | High-resolution Visium HD analysis and main figure reproduction |
+| `SpartanSVGDiscovery.ipynb` | Spartan's SVG discovery results and main figure reproduction |
 
 These notebooks demonstrate:
 
