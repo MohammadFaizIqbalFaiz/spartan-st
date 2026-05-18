@@ -84,10 +84,6 @@ The paper environment contains the pinned package versions used for the manuscri
 
 This quickstart is intended for new Spartan users. It demonstrates a minimal end-to-end workflow using the representative MERFISH dataset available from Squidpy. The workflow loads one MERFISH section, preprocesses the data, identifies Spartan spatial domains, runs SAQ-based spatially variable gene discovery, and visualizes both spatial domains and representative SVGs.
 
-A fully executable notebook version is available here:
-
-[Open the Quickstart notebook](tutorials/Quickstart.ipynb)
-
 ---
 
 ### 1. Import packages and load a MERFISH sample
