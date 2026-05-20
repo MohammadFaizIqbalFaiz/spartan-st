@@ -35,6 +35,7 @@ The reported settings are provided for transparency and reviewer reproducibility
 | Vizgen MERFISH | sample 2 | KNN = 28 | 1.20 |
 | Vizgen MERFISH | sample 3 | KNN = 28 | 0.90 |
 | Vizgen MERFISH | sample 4 | KNN = 28 | 1.20 |
+| Visium HD | sample 1 | KNN = 12 | 0.13 |
 
 ---
 
@@ -68,7 +69,7 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 
 ### MERFISH
 
-| Configuration | Sample / Bregma | Neighbors | Resolution interval | Layer ratio |
+| Configuration | Sample / Bregma | Neighbors | Resolutions [latent, spatial] | Layer ratio |
 |---|---:|---:|---|---:|
 | KNN10 + PCA | 0.04 | 10 | [0.163, 1.000] | 1.8 |
 | KNN10 + MULTISPATI PCA | 0.04 | 10 | [0.175, 0.950] | 1.8 |
@@ -83,7 +84,7 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 
 ### STARmap
 
-| Configuration | Sample | Neighbors | Resolution interval | Layer ratio |
+| Configuration | Sample | Neighbors | Resolution [latent, spatial]  | Layer ratio |
 |---|---:|---:|---|---:|
 | KNN10 + PCA | 417 | 10 | [0.500, 0.600] | 1.6 |
 | KNN10 + MULTISPATI PCA | 417 | 10 | [0.450, 0.600] | 1.6 |
@@ -94,7 +95,7 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 
 ### BaristaSeq
 
-| Configuration | Slice | Neighbors | Resolution interval | Layer ratio |
+| Configuration | Slice | Neighbors | Resolution [latent, spatial]  | Layer ratio |
 |---|---|---:|---|---:|
 | KNN10 + PCA | slice 1 | 10 | [0.500, 1.300] | 1.8 |
 | KNN10 + MULTISPATI PCA | slice 1 | 10 | [0.350, 1.500] | 1.8 |
@@ -105,14 +106,14 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 
 ### STARmap* / STARmap1k
 
-| Configuration | Sample | Neighbors | Resolution interval | Layer ratio |
+| Configuration | Sample | Neighbors | Resolution [latent, spatial]  | Layer ratio |
 |---|---|---:|---|---:|
 | KNN10 + PCA | sample 1 | 10 | [0.600, 1.450] | 1.4 |
 | KNN10 + MULTISPATI PCA | sample 1 | 10 | [0.500, 1.200] | 1.4 |
 
 ### osmFISH
 
-| Configuration | Sample | Neighbors | Resolution interval | Layer ratio |
+| Configuration | Sample | Neighbors | Resolution [latent, spatial]  | Layer ratio |
 |---|---|---:|---|---:|
 | KNN10 + PCA | sample 1 | 10 | [0.875, 1.200] | 1.2 |
 | KNN10 + MULTISPATI PCA | sample 1 | 10 | [0.875, 1.300] | 1.2 |
@@ -122,7 +123,8 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 ## Notes
 
 - NichePCA, BANKSY, and SpatialLeiden were run in their respective method-specific environments.
+- Resolution entry against each sample is the best resolution that give the highest NMI for that sample. Useful to reproduce results presented in Fig 4A-B and Supplementary Figure 13A-D.
 - Where possible, common preprocessing, PCA construction, spatial coordinates, and evaluation labels were harmonized across methods.
 - SpatialLeiden was evaluated using both PCA and MULTISPATI PCA configurations where available.
-- Method-specific parameters were selected according to the benchmarking protocol described in the manuscript Methods and Supplementary Methods.
+- Method-specific parameters were selected according to the benchmarking protocol described in the manuscript Methods.
 - Ground-truth labels were used only for benchmarking metric calculation.
