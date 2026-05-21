@@ -647,6 +647,7 @@ Reviewer-oriented tutorial notebooks are available in the [`tutorials/`](tutoria
 | `SequencingBasedSpartan.ipynb` | Stereo-seq sequencing-based workflow tutorial |
 | `VisiumHDAnalysis Using Spartan.ipynb` | High-resolution Visium HD analysis and main figure reproduction |
 | `SpartanSVGDiscovery.ipynb` | Spartan's SVG discovery results and main figure reproduction |
+| `Generate_Benchmarking_and_Ablation_Study_Figures tutorial.ipynb` | Detailed notebook to generate ablation and benchmarking studies panel figures in Figure 3 of the paper | 
 
 These notebooks demonstrate:
 
