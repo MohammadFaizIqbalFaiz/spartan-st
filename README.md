@@ -462,7 +462,7 @@ The table below provides suggested starting settings for major spatial transcrip
 | Technology | `spatial_coord` | `spatial_neighborhood` | `spatial_neighs` | `spatial_rings` | `gene_coord` | `gene_neighs` | Suggested `alpha` | Suggested `beta1` | Suggested `beta2` | Notes |
 |---|---|---|---:|---:|---|---:|---|---|---|---|
 | Visium HD | `grid` | `knn` | 4–6 | 2 | `generic` | 15 | 0.70–0.80 | 0.10–0.26 | 0.24–0.40 | Use higher `alpha` values for large high-resolution datasets. For microstructure detection, explore lower `beta1` values to increase the effective LSA contribution. |
-| MERFISH | `generic` | `knn` | 10–12 | NA | `generic` | 15 | 0.69–0.82 | 0.10–0.26 | 0.24–0.40 | Recommended for single-cell imaging datasets. Use higher `alpha` values when local spatial activation is expected to be highly informative. |
+| MERFISH | `generic` | `knn` | 10–12 | NA | `generic` | 15 | 0.69–0.82 | 0.10–0.26 | 0.24–0.40 | Recommended for single-cell imaging datasets. Use higher `alpha` and lower `beta1` values when local spatial activation is expected to be highly informative. |
 | MERFISH | `generic` | `delaunay` | NA | NA | `generic` | 15 | 0.75–0.85 | 0.10–0.26 | 0.24–0.40 | Delaunay graph construction can be useful for imaging-based single-cell datasets with irregular spatial layouts. |
 | Stereo-seq | `grid` | `knn` | 4 | 1 | `generic` | 15 | 0.50–0.60 | 0.26 | 0.24 | Sequencing-based datasets often stabilize at lower `alpha` values, reflecting a more balanced contribution of LSA, spatial adjacency, and gene-expression connectivity. |
 | Visium SD | `grid` | `knn` | 6 | 2 | `generic` | 15 | 0.55–0.75 | 0.26 | 0.24 | Standard Visium spot-level datasets generally benefit from moderate `alpha` values. |
