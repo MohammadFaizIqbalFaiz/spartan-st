@@ -124,7 +124,7 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 ## Notes
 
 - NichePCA, BANKSY, and SpatialLeiden were run in their respective method-specific environments.
-- Resolution entry against each sample is the best resolution that give the highest NMI for that sample. Useful to reproduce results presented in Fig 4A-B and Supplementary Figure 13A-D.
+- Resolution entry against each sample is the best resolution that give the highest ARI for that sample. Useful to reproduce results presented in Fig 4A-B and Supplementary Figure 13A-D.
 - Where possible, common preprocessing, PCA construction, spatial coordinates, and evaluation labels were harmonized across methods.
 - SpatialLeiden was evaluated using both PCA and MULTISPATI PCA configurations where available.
 - For NichePCA, the given Visium HD parameter settings were used to generate the spatial domains, presented in Figure 5B of the paper. 
