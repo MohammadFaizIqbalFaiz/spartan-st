@@ -723,10 +723,9 @@ pip install -e .
 The paper-lock environment is intended for reproducing manuscript analyses and tutorial notebooks.
 
 ---
+# Data availability for tutorials and reproducibility
 
-## Data availability for tutorials and reproducibility
-
-The primary data accession information has been submitted to ArrayExpress and is reported in the manuscript. Processed analysis files used by the tutorial notebooks, including `.zarr`, `.h5ad`, and `.csv` files, are provided for peer review as a password-protected archive.
+The primary data accession information has been submitted to ArrayExpress and is reported in the manuscript. The SRT samples and processed analysis files used by the tutorial notebooks, including `.zarr`, `.h5ad`, and `.csv` files, are provided for peer review as a password-protected archive.
 
 <p align="center">
   <a href="https://drive.google.com/file/d/12yG1AcbD2kz01Pk3vMxDCxmwOBYyw2K6/view?usp=drive_link">
@@ -734,9 +733,11 @@ The primary data accession information has been submitted to ArrayExpress and is
   </a>
 </p>
 
-The archive password is the manuscript number. This temporary archive is provided to help reviewers reproduce the tutorial notebooks and manuscript figure-generation workflows without needing to regenerate all intermediate processed files.
+The archive password is the manuscript number. This temporary archive is provided for peer review to help reviewers reproduce the tutorial notebooks and manuscript figure-generation workflows without needing to regenerate intermediate files or download individual SRT samples from separate public repositories. All files required for reproducing the tutorial workflows are provided in one place.
 
 After publication, the processed reproducibility files will be linked through the permanent public accession or repository associated with the manuscript.
+
+---
 
 ## Tested environment
 
