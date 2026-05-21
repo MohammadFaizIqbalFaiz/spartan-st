@@ -610,7 +610,46 @@ adata.var["spartan_saq_rank"]
 ```
 
 ---
+### Key parameters for `sp.tl.spartan_svg`
 
+`sp.tl.spartan_svg` performs SAQ-based spatially variable gene discovery using the Local Spatial Activation graph. For each gene, Spartan computes a Spatial Activation Quotient (SAQ) score that measures how strongly the gene expression pattern aligns with the LSA graph. Statistical significance is estimated using permutation-based null distributions followed by Benjamini–Hochberg FDR correction.
+
+| Parameter | Default | Description |
+|---|---:|---|
+| `adata` | required | Input `AnnData` object containing expression values and gene metadata. |
+| `lsa_graph` | required | Local Spatial Activation graph, usually `adata.obsp["spartan_lsa_graph"]`, used to score spatial activation of each gene. |
+| `layer` | `"log1pX"` | Expression layer used for SAQ scoring. If the layer is unavailable and `use_X_if_missing=True`, Spartan falls back to `adata.X`. |
+| `n_permutations` | `1000` | Total number of permutations used to estimate the null distribution of SAQ scores. Higher values provide more stable p-values but increase runtime. |
+| `n_cores` | `8` | Number of CPU cores used for parallel permutation testing. |
+| `use_X_if_missing` | `True` | If `True`, uses `adata.X` when the specified `layer` is not found in `adata.layers`. If `False`, an error is raised when the layer is missing. |
+| `alpha_svg` | `0.05` | FDR threshold used to call significant spatially variable genes. Genes with `spartan_saq_fdr < alpha_svg` are marked as SVGs. |
+| `chunk_size` | `200` | Number of genes processed per chunk. Smaller chunks reduce memory usage; larger chunks may improve speed on machines with sufficient memory. |
+| `seed` | `1` | Random seed used for reproducible permutation testing. |
+| `key_added` | `"spartan_svg"` | Column name added to `adata.var` containing Boolean SVG calls. |
+| `copy` | `False` | If `True`, returns a modified copy of `adata`; otherwise updates `adata` in place. |
+| `dtype` | `np.float32` | Dense array type used during chunked computation. `float32` reduces memory usage and is usually sufficient. |
+| `prefer_backend` | `"threads"` | Joblib backend used for parallel permutation testing. Use `"threads"` for lower overhead; use `"processes"` if thread contention becomes an issue. |
+| `two_stage` | `True` | Enables two-stage permutation testing. A smaller first-stage permutation run is applied to all genes, followed by refinement of the top-ranked candidates. |
+| `n_permutations_stage1` | `100` | Number of first-stage permutations applied to all genes when `two_stage=True`. |
+| `top_k_refine` | `3000` | Number of top candidate genes refined using the remaining permutations in stage 2. Smaller values improve speed; larger values refine more candidates. |
+
+---
+
+#### Recommended usage
+
+For most datasets, the default two-stage mode provides a good balance between speed and statistical stability:
+
+```python
+sp.tl.spartan_svg(
+    adata,
+    lsa_graph=adata.obsp["spartan_lsa_graph"],
+    layer="log1pX",
+    n_permutations=1000,
+    n_cores=8,
+    alpha_svg=0.05,
+    key_added="spartan_svg",
+)
+```
 ## Plotting API
 
 Spartan provides lightweight plotting helpers in `spartan.pl`.
