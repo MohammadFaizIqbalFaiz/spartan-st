@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="assets/Spartan_logo.png" width="520"/>
 </p>
@@ -9,18 +8,23 @@
 
 <p align="center">
   <a href="https://github.com/MohammadFaizIqbalFaiz/spartan-st">
-    <img src="https://img.shields.io/badge/code-GitHub-black"/>
-    <img src="https://img.shields.io/github/v/release/MohammadFaizIqbalFaiz/spartan-st"/>
-
+    <img src="https://img.shields.io/badge/code-GitHub-black" alt="GitHub">
+  </a>
+  <a href="https://github.com/MohammadFaizIqbalFaiz/spartan-st/releases">
+    <img src="https://img.shields.io/github/v/release/MohammadFaizIqbalFaiz/spartan-st" alt="GitHub release">
+  </a>
+  <a href="https://spartan-st.readthedocs.io/en/latest/">
+    <img src="https://readthedocs.org/projects/spartan-st/badge/?version=latest" alt="Documentation Status">
   </a>
   <a href="LICENSE">
-    <img src="https://img.shields.io/badge/license-BSD--3--Clause-green"/>
+    <img src="https://img.shields.io/badge/license-BSD--3--Clause-green" alt="License: BSD-3-Clause">
   </a>
+</p>
 
+<p align="center">
   <a href="https://spartan-st.readthedocs.io/en/latest/">
-  <img src="https://readthedocs.org/projects/spartan-st/badge/?version=latest" alt="Documentation Status">
-</a>
-
+    <strong>Read the full Spartan documentation</strong>
+  </a>
 </p>
 
 <p align="center">
