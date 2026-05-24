@@ -11,19 +11,15 @@ Spartan documentation
 
 .. raw:: html
 
-   <p style="text-align: justify;">
-
-Spartan is an activation-aware spatial transcriptomics framework for spatial domain
-identification and spatially variable gene discovery. Spartan integrates spatial topology,
-gene expression connectivity, and Local Spatial Activation (LSA) into an aggregated graph
-for unsupervised spatial domain detection. The framework is designed for multiple spatial
-transcriptomics technologies, including imaging-based datasets such as MERFISH,
-sequencing-based datasets such as Stereo-seq, and high-resolution platforms such as
-Visium HD. Spartan can operate on both classic AnnData and next-generation spatial omics,
-SpatialData frameworks.
-
-.. raw:: html
-
+   <p style="text-align: justify; text-justify: inter-word;">
+     Spartan is an activation-aware spatial transcriptomics framework for spatial domain
+     identification and spatially variable gene discovery. Spartan integrates spatial topology,
+     gene expression connectivity, and Local Spatial Activation (LSA) into an aggregated graph
+     for unsupervised spatial domain detection. The framework is designed for multiple spatial
+     transcriptomics technologies, including imaging-based datasets such as MERFISH,
+     sequencing-based datasets such as Stereo-seq, and high-resolution platforms such as
+     Visium HD. Spartan can operate on both classic AnnData and next-generation spatial omics,
+     SpatialData frameworks.
    </p>
 
 .. toctree::
