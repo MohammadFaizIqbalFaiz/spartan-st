@@ -12,10 +12,6 @@ Many spatial clustering approaches rely primarily on spatial proximity, gene-exp
 Spartan addresses this problem using <strong>Local Spatial Activation (LSA)</strong>. LSA is a neighborhood-relative graph signal that measures how strongly neighboring cells or spots deviate from their local transcriptional context. Instead of only asking whether neighboring observations are similar, LSA asks whether local neighborhoods contain coordinated transcriptional activation or deviation relative to their surrounding tissue environment. This allows Spartan to preserve spatial coherence while remaining sensitive to localized molecular structure.
 </p>
 
-<p style="text-align: justify; text-justify: inter-word;">
-Spartan addresses this problem using <strong>Local Spatial Activation (LSA)</strong>. LSA is a neighborhood-relative graph signal that measures how strongly neighboring cells or spots deviate from their local transcriptional context. Instead of only asking whether neighboring observations are similar, LSA asks whether local neighborhoods contain coordinated transcriptional activation or deviation relative to their surrounding tissue environment. This allows Spartan to preserve spatial coherence while remaining sensitive to localized molecular structure.
-</p>
-
 <p align="center">
   <img src="_static/LSA_conceptual_figure.png" width="900"/>
 </p>
