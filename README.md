@@ -16,6 +16,11 @@
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-BSD--3--Clause-green"/>
   </a>
+
+  <a href="https://spartan-st.readthedocs.io/en/latest/">
+  <img src="https://readthedocs.org/projects/spartan-st/badge/?version=latest" alt="Documentation Status">
+</a>
+
 </p>
 
 <p align="center">
@@ -697,6 +702,8 @@ These notebooks demonstrate:
 - nLSAS-based configuration filtering,
 - reproduction of key manuscript analyses and figure panels.
 - Spartan's SVG discovery utility across diverse spatially resolved transcriptomics technologies.
+
+Full documentation is available on [Read the Docs](https://spartan-st.readthedocs.io/en/latest/). The README provides the complete quickstart and reviewer-facing overview, while Read the Docs provides structured navigation for installation, API reference, spatial domain identification, SVG discovery, and reproducibility.
 
 ---
 
