@@ -1,4 +1,8 @@
-.rst-content p {
-    text-align: justify;
+/* Justify main documentation paragraphs */
+.rst-content p,
+.rst-content .section p,
+.rst-content .document p,
+.wy-nav-content p {
+    text-align: justify !important;
     text-justify: inter-word;
 }
