@@ -11,6 +11,14 @@ Spartan documentation
 
 .. raw:: html
 
+   <p align="center">
+     <a href="https://github.com/MohammadFaizIqbalFaiz/spartan-st">
+       <img src="https://img.shields.io/badge/GitHub-Spartan%20repository-black?style=for-the-badge&logo=github" alt="Spartan GitHub repository">
+     </a>
+   </p>
+
+.. raw:: html
+
    <p style="text-align: justify; text-justify: inter-word;">
      Spartan is an activation-aware spatial transcriptomics framework for spatial domain
      identification and spatially variable gene discovery. Spartan integrates spatial topology,
