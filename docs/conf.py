@@ -31,3 +31,19 @@ html_logo = "_static/Spartan_logo.png"
 
 myst_enable_extensions = ["dollarmath", "amsmath"]
 nbsphinx_execute = "never"
+autodoc_mock_imports = [
+    "scanpy",
+    "squidpy",
+    "spatialdata",
+    "spatialdata_plot",
+    "anndata",
+    "igraph",
+    "leidenalg",
+    "sklearn",
+    "scipy",
+    "statsmodels",
+    "joblib",
+    "matplotlib",
+    "pandas",
+    "numpy",
+]
