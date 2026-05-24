@@ -14,7 +14,7 @@
 
   </a>
   <a href="LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-green"/>
+    <img src="https://img.shields.io/badge/license-BSD--3--Clause-green"/>
   </a>
 </p>
 
