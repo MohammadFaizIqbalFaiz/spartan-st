@@ -103,7 +103,7 @@ For Vizgen MERFISH, the Delaunay and KNN configurations used different resolutio
 
 This section documents the key parameter settings used for the recent competing methods included in the benchmarking analyses. Each method was run in its respective recommended software environment because several tools require mutually incompatible dependencies. Common preprocessing and harmonized input preparation are described in the manuscript Methods; the tables below record the method-specific parameters used for each spatial transcriptomics dataset.
 
-The reported settings are provided for transparency and reviewer reproducibility. Ground-truth labels were used only for metric calculation and benchmarking, not during unsupervised clustering by Spartan or the competing methods unless required by the original method workflow.
+The reported settings are provided for transparency and reviewer reproducibility, specifically to reproduce the ARI benchmarking panels for each method in Figure 3 and the corresponding supplementary benchmarking figures. Ground-truth labels were used only for metric calculation and benchmarking, not during unsupervised clustering by Spartan or the competing methods unless required by the original method workflow.
 
 ---
 
@@ -216,9 +216,9 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 ## General notes
 
 - NichePCA, BANKSY, and SpatialLeiden were run in their respective method-specific environments.
-- Resolution entries for each sample indicate the resolution that gave the highest ARI for that sample. These settings support reproduction of the benchmarking results presented in Figure 3 and the corresponding supplementary figures.
+- Resolution entries indicate the method- and sample-specific settings used to reproduce the ARI benchmarking panels for each method in Figure 3 and the corresponding supplementary benchmarking figures. These entries are provided for reviewer reproducibility of the reported ARI results.
 - Where possible, common preprocessing, PCA construction, spatial coordinates, and evaluation labels were harmonized across methods.
 - SpatialLeiden was evaluated using both PCA and MULTISPATI PCA configurations where available.
 - For NichePCA, the Visium HD parameter settings were used to generate the spatial domains presented in Figure 5B of the paper.
-- Method-specific parameters were selected according to the benchmarking protocol described in the manuscript Methods.
+- Method-specific parameters were selected according to the benchmarking protocol described in the manuscript Methods and are reported here to make the Figure 3 ARI benchmarking results reproducible.
 - Ground-truth labels were used only for benchmarking metric calculation.
