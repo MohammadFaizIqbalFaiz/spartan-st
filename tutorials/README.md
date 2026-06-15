@@ -103,7 +103,7 @@ For Vizgen MERFISH, the Delaunay and KNN configurations used different resolutio
 
 This section documents the key parameter settings used for the recent competing methods included in the benchmarking analyses. Each method was run in its respective recommended software environment because several tools require mutually incompatible dependencies. Common preprocessing and harmonized input preparation are described in the manuscript Methods; the tables below record the method-specific parameters used for each spatial transcriptomics dataset.
 
-The reported settings are provided for transparency and reviewer reproducibility, specifically to reproduce the ARI benchmarking panels for each method in Figure 3 and the corresponding supplementary benchmarking figures. Ground-truth labels were used only for metric calculation and benchmarking, not during unsupervised clustering by Spartan or the competing methods unless required by the original method workflow.
+The reported settings are provided for transparency and reviewer reproducibility, specifically to reproduce the ARI benchmarking panels for each method in Figure 4 and the corresponding supplementary benchmarking figures. Ground-truth labels were used only for metric calculation and benchmarking, not during unsupervised clustering by Spartan or the competing methods unless required by the original method workflow.
 
 ---
 
