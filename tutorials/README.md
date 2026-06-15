@@ -216,9 +216,9 @@ SpatialLeiden was evaluated using both PCA-based and MULTISPATI PCA-based config
 ## General notes
 
 - NichePCA, BANKSY, and SpatialLeiden were run in their respective method-specific environments.
-- Resolution entries indicate the method- and sample-specific settings used to reproduce the ARI benchmarking panels for each method in Figure 3 and the corresponding supplementary benchmarking figures. These entries are provided for reviewer reproducibility of the reported ARI results.
+- Resolution entries indicate the method- and sample-specific settings used to reproduce the ARI benchmarking panels for each method in Figure 4 and the corresponding supplementary benchmarking figures. These entries are provided for reviewer reproducibility of the reported ARI results.
 - Where possible, common preprocessing, PCA construction, spatial coordinates, and evaluation labels were harmonized across methods.
 - SpatialLeiden was evaluated using both PCA and MULTISPATI PCA configurations where available.
 - For NichePCA, the Visium HD parameter settings were used to generate the spatial domains presented in Figure 5B of the paper.
-- Method-specific parameters were selected according to the benchmarking protocol described in the manuscript Methods and are reported here to make the Figure 3 ARI benchmarking results reproducible.
+- Method-specific parameters were selected according to the benchmarking protocol described in the manuscript Methods and are reported here to make the Figure 4 ARI benchmarking results reproducible.
 - Ground-truth labels were used only for benchmarking metric calculation.
