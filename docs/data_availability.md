@@ -3,7 +3,7 @@
 The primary data accession information has been submitted to ArrayExpress and is reported in the manuscript. The SRT samples and processed analysis files used by the tutorial notebooks, including `.zarr`, `.h5ad`, and `.csv` files, are provided for peer review as a password-protected archive.
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1XjOqgL4dH4lbNWbGt_F0Gkt6dlIoff3z/view?usp=sharing">
+  <a href="https://drive.google.com/file/d/1X94-oQ_aMrouQBzJR5f8xdk4FFcFsvX_/view?usp=sharing">
     <img src="https://img.shields.io/badge/Download-Spartan%20review%20data%20archive-blue?style=for-the-badge&logo=googledrive" alt="Download Spartan review data archive">
   </a>
 </p>
