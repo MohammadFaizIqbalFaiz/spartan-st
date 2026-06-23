@@ -8,4 +8,4 @@ The primary data accession information has been submitted to ArrayExpress and is
   </a>
 </p>
 
-The archive password is the manuscript number. This temporary archive is provided for peer review to help reviewers reproduce the tutorial notebooks and manuscript figure-generation workflows.
+The archive password is the manuscript number (submission ID). This temporary archive is provided for peer review to help reviewers reproduce the tutorial notebooks and manuscript figure-generation workflows.
