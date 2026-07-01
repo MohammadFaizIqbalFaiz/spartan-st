@@ -744,7 +744,7 @@ The primary data accession information has been submitted to ArrayExpress and is
   </a>
 </p>
 
-The archive password is the manuscript number (submission ID). This temporary archive is provided for peer review to help reviewers reproduce the tutorial notebooks and manuscript figure-generation workflows without needing to regenerate intermediate files or download individual SRT samples from separate public repositories. All files required for reproducing the tutorial workflows are provided in one place.
+The archive password is the manuscript number. This temporary archive is provided for peer review to help reviewers reproduce the tutorial notebooks and manuscript figure-generation workflows without needing to regenerate intermediate files or download individual SRT samples from separate public repositories. All files required for reproducing the tutorial workflows are provided in one place.
 
 After publication, the processed reproducibility files will be linked through the permanent public accession or repository associated with the manuscript.
 
