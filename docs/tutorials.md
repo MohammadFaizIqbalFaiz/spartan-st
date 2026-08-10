@@ -2,7 +2,7 @@
 
 | Notebook | Description |
 |---|---|
-| `ImagingDatasetSpartan.ipynb` | MERFISH imaging-based workflow and alpha-selection demonstration. |
+| `ImagingDatasetSpartanUpdate.ipynb` | MERFISH imaging-based workflow and alpha-selection demonstration. |
 | `SequencingDatasetSpartan.ipynb` | Stereo-seq sequencing-based workflow and alpha-selection demonstration. |
 | `VisiumHD Analysis Using Spartan.ipynb` | Visium HD analysis reproducing Figure 5 and Figure 6. |
 | `SpartanSVGDiscovery.ipynb` | SAQ/SVG discovery workflow reproducing SVG panels in Figure 4. |
